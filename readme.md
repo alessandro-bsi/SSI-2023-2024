@@ -19,7 +19,7 @@ Contributions to this repository are welcome. If you have suggestions for improv
 
 ## License
 
-The materials in this repository are provided under , which allows for free use, modification, and distribution under certain conditions. Please see the LICENSE file for more details.
+The materials in this repository are provided under [MIT](https://opensource.org/license/mit), which allows for free use, modification, and distribution under certain conditions. Please see the LICENSE file for more details.
 
 
  
