@@ -6,7 +6,8 @@ security, focusing on the theoretical foundations and practical applications.
 
 ### Lectures
 
-- Lecture 01: Pre-requisites to build a secure web system
+- [Lecture 01](Lecture01): Pre-requisites to build a secure web system
+- [Lecture 02](Lecture02): HTTP/S (and in general TLS wrapped protocols) to protect communications
 
 ## Disclaimer
 
@@ -19,3 +20,6 @@ Contributions to this repository are welcome. If you have suggestions for improv
 ## License
 
 The materials in this repository are provided under , which allows for free use, modification, and distribution under certain conditions. Please see the LICENSE file for more details.
+
+
+ 
