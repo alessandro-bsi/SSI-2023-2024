@@ -35,7 +35,7 @@ class BashCertificateGenerator(CertificateGenerator):
                     "[ca_def]",
                     f"new_certs_dir             = {self.output_dir}",
                     f"database                  = {self.output_dir.joinpath('certs.db')}"
-                    "default_md                 = md5"
+                    "default_md                 = sha256"
                 ]
 
             else:
