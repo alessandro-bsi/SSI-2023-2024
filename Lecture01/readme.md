@@ -64,9 +64,12 @@ certificates.
 ### Solutions
 
 Three solutions are provided:
-* Bash Script using openssl library
-* Windows PowerShell script using standard Windows cmdlets
-* Native Python solution
+* Standalone Bash Script using openssl library [ex01.sh](standalone/ex01.sh)
+* Standalone Windows PowerShell script using standard Windows cmdlets [ex01.ps1](standalone/ex01.ps1)
+* Python solution [ca-manager.py](ca-manager.py), implementing:
+  * A Bash Wrapper
+  * A PowerShell Wrapper
+  * A native Python solution
 
 All the solutions will read the content of the `config/config.ini` file and generate 
 certificates accordingly.
