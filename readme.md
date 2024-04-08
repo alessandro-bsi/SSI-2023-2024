@@ -8,6 +8,7 @@ security, focusing on the theoretical foundations and practical applications.
 
 - [Lecture 01](Lecture01): Pre-requisites to build a secure web system
 - [Lecture 02](Lecture02): HTTP/S (and in general TLS wrapped protocols) to protect communications
+- [Lecture 03](Lecture03): Man-In-The-Middle (MITM) Attacks in Network Communications 
 
 ## Disclaimer
 

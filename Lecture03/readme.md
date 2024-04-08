@@ -86,14 +86,10 @@ The Domain Name System (DNS) is fundamental to the functioning of the Internet, 
 1. **Attack on DNS Server**: The attacker exploits vulnerabilities in the DNS server software to inject falsified DNS records into the cache, redirecting requests to a server controlled by the attacker.
 2. **Interception**: By listening to DNS traffic on unsecured networks, an attacker can intercept and modify DNS requests before they reach the intended server.
 3. **Man-In-The-Middle (MITM) Attacks**: The attacker positions themselves between the user and the DNS server, modifying DNS responses to redirect the user to malicious sites.
-4. **Modifying DNS Server Settings**: Through malware, malicious scripts, or through physical access to the device, attackers can change the DNS settings of the victim's device to point to a DNS server under their control. This fake DNS server can then resolve the requested domain names into malicious IP addresses, redirecting users to phishing sites or servers distributing malware.
-5. **Tampering with System Resolver**: By altering the DNS resolver configuration files on the operating system (such as the resolv.conf file on Unix/Linux systems or registry settings on Windows), attackers can divert all DNS requests through servers of their choice. This approach can be particularly insidious, as the changes may not be immediately obvious to the user or system administrator.
 
 #### Protection Strategies
 
-Protecting against DNS
-
- Spoofing requires a multi-layered approach that includes both server and client security.
+Protecting against DNS Spoofing requires a multi-layered approach that includes both server and client security.
 
 1. **Use of DNSSEC (DNS Security Extensions)**: DNSSEC adds a layer of authentication to DNS responses through the digital signing of DNS records. This ensures the integrity and authenticity of DNS responses, effectively preventing DNS Spoofing.
 2. **Strict DNS Server Validation**: DNS servers should be configured to limit recursion and not respond to suspicious requests. Implementing rate limiting for DNS requests can also help mitigate attacks.
@@ -104,13 +100,17 @@ Protecting against DNS
 
 ## 3. Attack on Local Machine via Modification of /etc/hosts or Local DNS Change
 
-An extension to local DNS corruption is modifying the `/etc/hosts` file or local DNS server can redirect the victim's requests to sites controlled by the attacker, allowing interception or manipulation of data.
-
+When an attacker gains local access to the victim's computer system, either through the deployment of malware or through direct physical access to the machine, the possibility opens up to manipulate critical aspects of the victim's network configuration. In particular, the attacker can modify the local DNS settings, alter the DNS resolver, or directly intervene in the hosts file, diverting network traffic towards servers controlled by the attacker.
 ### Technical Details
 
-The /etc/hosts file is a critical component of Unix and Linux operating systems, used to map IP addresses to domain names before the system performs a query to the DNS server. Modifying the /etc/hosts file can be a tactic employed by both attackers and system administrators for various purposes, including redirecting network traffic or blocking certain sites.
+Local name resolution on Linux systems occurs through a flexible and configurable mechanism known as NSSwitch (Name Service Switch), which determines how various name resolution queries (such as users, groups, and hostnames) are handled by the system. The NSSwitch configuration is found in the /etc/nsswitch.conf file, where administrators can specify the order and resolution methods for each service. For host name resolution, the configuration usually defines a cascade of resolution services, typically starting with files, indicating that the system should first search the local /etc/hosts file for a direct match between host name and IP address. If no match is found, the process continues with mdns4 minimal, which attempts a multicast DNS resolution (useful in local networks for the discovery of services without the need for a centralized DNS server). Finally, if this step also fails, the dns service is consulted, which involves resolution through the DNS servers configured in the /etc/resolv.conf file.
 
 ![DNS Lookup on Linux](assets/DNS-Lookup.png)
+
+This also opens up a wide range of attacks, from modifying the hosts file, changing DNS settings, to manipulating the resolution strategy itself, exposing the system to significant security risks.
+1. **Modifying DNS Server Settings**: Through malware, malicious scripts, or through physical access to the device, attackers can change the DNS settings of the victim's device to point to a DNS server under their control. This fake DNS server can then resolve the requested domain names into malicious IP addresses, redirecting users to phishing sites or servers distributing malware.
+2. **Tampering with System Resolver**: By altering the DNS resolver configuration files on the operating system (such as the resolv.conf file on Unix/Linux systems or registry settings on Windows), attackers can divert all DNS requests through servers of their choice. This approach can be particularly insidious, as the changes may not be immediately evident to the user or system administrator.
+3. **Tampering with the hosts file**: An alternative to corrupting local DNS is modifying the /etc/hosts file or local DNS server can redirect the victim's requests to sites controlled by the attacker, allowing the interception or manipulation of data.
 
 ### Modification Process
 
